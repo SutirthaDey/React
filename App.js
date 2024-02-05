@@ -13,22 +13,34 @@ const heading = React.createElement('h1', {id: 'heading', xyz:'xyz'}, "Hello Wor
 // This is a property of ReactDOM not React
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// Here we are using JSX instead of React.createElement
 
-// root render takes all the react object and connverts them to html
-// element and create the dom tree
-// root.render(heading);
+// The flow
+// 1. We write JSX which is HTML like syntax but not HTML. It's a convinient way creating React elements.
+// 2. The JSX gets transpiled into React.createElement syntax by Babel.
+// 3. Then the React code gets executed and become React Object.
+// 4. Using ReactDOM we render the React object which gets converted to DOM elements.
 
-
-
-// creating child1
-const child1 = React.createElement('div', {id: 'child1'}, "This is child 1")
-
-// creating child2
-const child2 = React.createElement('div', {id: 'child2'}, "This is child 2");
-
-// creating an element parent with two sibiling elements child1,child2
-// to create sibling element we need to pass it in array
-const parent = React.createElement('div', {id: 'parent'}, [child1, child2])
+const jsxHeading = <h1 id='heading' xyz='xyz'>Hello World From React!!!</h1>
 
 
-root.render(parent)
+// creating functional components
+// functional components returns JSX(React Elements)
+// functional components should start with UpperCase letter
+const TitleComp = ()=> {
+    return <h1>This is title</h1>
+}
+
+
+// Nesting functional components within another functional component(Component Composition)
+const HeadingComp = ()=> {
+    return (
+        <div>
+            {TitleComp()}
+            <h2>This is the description</h2>
+        </div>
+    )
+}
+
+// Rendering functional components
+root.render(<HeadingComp/>)
