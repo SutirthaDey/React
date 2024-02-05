@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 // creating react element(which is an object)
 // first argument is the tag type, second argument is the attributes
 // of the element and the third argument is the content/children of the element
